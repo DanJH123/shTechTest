@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 /** Version of a Hospital object that is used throughout the project. */
 @Parcelize
-class DomainHospital (
+data class DomainHospital (
     val organisationID: Int,
     val organisationCode: String,
     val organisationType: String,
@@ -21,8 +21,8 @@ class DomainHospital (
     val city: String,
     val county: String,
     val postcode: String,
-    val latitude: Double,
-    val longitude: Double,
+    val latitude: Double?,
+    val longitude: Double?,
     val parentODSCode: String,
     val parentName: String,
     val phone: String,
@@ -51,8 +51,8 @@ fun NetworkHospital.asDomain(): DomainHospital {
         city = city,
         county = county,
         postcode = postcode,
-        latitude = latitude,
-        longitude = longitude,
+        latitude = latitude.toDoubleOrNull(),
+        longitude = longitude.toDoubleOrNull(),
         parentODSCode = parentODSCode,
         parentName = parentName,
         phone = phone,
