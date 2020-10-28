@@ -1,13 +1,12 @@
 package com.sh.techtest.hospitals.viewmodels
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.sh.techtest.hospitals.domain.DomainHospital
 import com.sh.techtest.hospitals.repositories.HospitalsRepository
-import com.sh.techtest.hospitals.ui.HospitalListFragment
+import com.sh.techtest.hospitals.viewmodels.HospitalsViewModel.SubTypeFilter.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -23,6 +22,14 @@ class HospitalsViewModel(app: Application): AndroidViewModel(app){
         LOADING,
         ERROR,
         SUCCESS
+    }
+
+    enum class SubTypeFilter(val key: String) {
+        NONE(""),
+        HOSPITAL("Hospital"),
+        MENTAL_HEALTH("Mental Health Hospital"),
+        UNKNOWN("UNKNOWN"),
+
     }
 
     private val repository = HospitalsRepository()
@@ -41,6 +48,11 @@ class HospitalsViewModel(app: Application): AndroidViewModel(app){
     val status: LiveData<HospitalApiStatus>
     get() = _status
 
+    // Internal and external access to filter. Only mutable within this class
+    private val _filter = MutableLiveData<SubTypeFilter>()
+    val filter: LiveData<SubTypeFilter>
+    get() = _filter
+
     init {
         fetchHospitalData()
     }
@@ -57,7 +69,7 @@ class HospitalsViewModel(app: Application): AndroidViewModel(app){
 
             when(result.responseKey){
                 HospitalsRepository.SUCCESS -> {
-                    _hospitalsList.postValue(result.responseList)
+                    updateFilter(_filter.value ?: NONE)
                     _status.postValue(HospitalApiStatus.SUCCESS)
                 }
                 else -> {
@@ -65,6 +77,23 @@ class HospitalsViewModel(app: Application): AndroidViewModel(app){
                 }
             }
         }
+    }
+
+    fun updateFilter(subTypeFilter: SubTypeFilter) {
+        _filter.postValue(subTypeFilter)
+        applyFilter(subTypeFilter, repository.hospitalsList)
+    }
+
+    private fun applyFilter(filter: SubTypeFilter, list: List<DomainHospital>?){
+        if(list.isNullOrEmpty()) return
+
+        _hospitalsList.postValue(when (filter) {
+            HOSPITAL -> list.filter { it.subType == HOSPITAL.key }
+            MENTAL_HEALTH -> list.filter { it.subType == MENTAL_HEALTH.key }
+            UNKNOWN -> list.filter { it.subType == UNKNOWN.key }
+            else -> list
+        })
+
     }
 
     override fun onCleared() {

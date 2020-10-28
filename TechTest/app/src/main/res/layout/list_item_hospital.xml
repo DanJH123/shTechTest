@@ -28,12 +28,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="@dimen/medium_text"
+            android:textSize="@dimen/small_text"
+            android:ellipsize="end"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tab"
             app:layout_constraintStart_toStartOf="@+id/tab"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="39938" />
+            tools:text="3775035" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -119,8 +120,8 @@
 
         <ImageView
             android:id="@+id/nextBtn"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="@dimen/medium_icon"
+            android:layout_height="@dimen/medium_icon"
             android:scaleType="fitCenter"
             app:tint="@color/mid"
             app:layout_constraintBottom_toBottomOf="parent"

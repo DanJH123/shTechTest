@@ -1,6 +1,7 @@
 package com.sh.techtest.hospitals.repositories
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import com.sh.techtest.hospitals.domain.DomainHospital
 import com.sh.techtest.hospitals.domain.asDomain
 import com.sh.techtest.hospitals.network.HospitalApi
@@ -33,6 +34,13 @@ class HospitalsRepository(){
     class HospitalListResponse(val responseKey: Int, val responseList: List<DomainHospital>?)
 
     /**
+     * Publicly accessible list of hospitals to be set once getHospitalData has been successfully
+     * executed
+     * */
+    var hospitalsList: List<DomainHospital>? = null
+
+
+    /**
      * Calls API to get list of hospitals
      * @return [HospitalListResponse] containing basic success/error codes with the list or null
      * */
@@ -40,11 +48,12 @@ class HospitalsRepository(){
         return try{
             //perform request
             val result = HospitalApi.service.getHospitals()
-            //convert to domain list
-            val domainResults = result.map { it.asDomain() }
+
+            //convert to domain list and assign to property
+            hospitalsList = result.map { it.asDomain() }
 
             //Wrap results with code and return
-            HospitalListResponse(SUCCESS, domainResults)
+            HospitalListResponse(SUCCESS, hospitalsList)
         }
         catch (h: HttpException){
             h.printStackTrace()

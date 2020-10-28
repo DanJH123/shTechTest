@@ -1,9 +1,7 @@
 package com.sh.techtest.hospitals.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.sh.techtest.R
@@ -34,5 +32,8 @@ class HospitalInfoFragment : Fragment() {
 
         return binding.root
     }
+
+
+
 
 }

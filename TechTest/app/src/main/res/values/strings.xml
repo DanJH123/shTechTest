@@ -26,4 +26,11 @@
     <string name="hospital_info_website">Website</string>
     <string name="hospital_info_fax">Fax</string>
     <string name="hospital_info_pims">PIMS?</string>
+
+    <string name="filter_menu_show_all">Show All</string>
+    <string name="filter_menu_show_hospital">Hospitals</string>
+    <string name="filter_menu_show_mental_health">Mental Health Hospitals</string>
+    <string name="filter_menu_show_unknown">Unknown</string>
+    <string name="hospital_list_fetch_error">Could not fetch data</string>
+    <string name="hospital_list_fetch_retry">Retry</string>
 </resources>
