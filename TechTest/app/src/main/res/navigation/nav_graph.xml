@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/hospitalListFragment"
         android:name="com.sh.techtest.hospitals.ui.HospitalListFragment"
-        android:label="HospitalListFragment" >
+        android:label="@string/hospital_list_title">
         <action
             android:id="@+id/action_hospitalListFragment_to_hospitalInfoFragment"
             app:destination="@id/hospitalInfoFragment"
@@ -20,8 +20,8 @@
     <fragment
         android:id="@+id/hospitalInfoFragment"
         android:name="com.sh.techtest.hospitals.ui.HospitalInfoFragment"
-        android:label="fragment_hospital_info"
-        tools:layout="@layout/fragment_hospital_info" >
+        android:label="@string/hospital_info_title"
+        tools:layout="@layout/fragment_hospital_info">
         <argument
             android:name="hospital"
             app:argType="com.sh.techtest.hospitals.domain.DomainHospital" />

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="hospital"
+            type="com.sh.techtest.hospitals.ui.DisplayHospital" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/location_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:showIn="@layout/fragment_hospital_info">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/large_text"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/hospital_info_location_title"
+            android:layout_marginLeft="8dp" />
+
+        <com.sh.techtest.utils.InfoListItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:fieldStr="@string/hospital_info_address_1"
+            app:valueStr="@{hospital.address1}"/>
+
+        <com.sh.techtest.utils.InfoListItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:fieldStr="@string/hospital_info_address_2"
+            app:valueStr="@{hospital.address2}"/>
+
+        <com.sh.techtest.utils.InfoListItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:fieldStr="@string/hospital_info_address_3"
+            app:valueStr="@{hospital.address3}"/>
+
+        <com.sh.techtest.utils.InfoListItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:fieldStr="@string/hospital_info_city"
+            app:valueStr="@{hospital.city}"/>
+
+        <com.sh.techtest.utils.InfoListItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:fieldStr="@string/hospital_info_county"
+            app:valueStr="@{hospital.county}"/>
+
+        <com.sh.techtest.utils.InfoListItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:fieldStr="@string/hospital_info_postcode"
+            app:valueStr="@{hospital.postcode}"/>
+
+        <com.sh.techtest.utils.InfoListItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:fieldStr="@string/hospital_info_coordinates"
+            app:valueStr="@{hospital.coordinates}"/>
+
+    </LinearLayout>
+</layout>

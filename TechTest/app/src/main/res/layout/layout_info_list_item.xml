@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/InfoListItem"
+    android:orientation="vertical"
+    android:layout_marginBottom="4dp">
+
+    <TextView
+        android:id="@+id/field_str"
+        tools:text="Field"
+        android:textSize="@dimen/medium_text"
+        style="@style/InfoListItemText" />
+
+    <TextView
+        android:id="@+id/value_str"
+        tools:text="value"
+        android:layout_marginBottom="4dp"
+        style="@style/InfoListItemText" />
+
+</LinearLayout>
+

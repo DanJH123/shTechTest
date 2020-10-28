@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="hospital"
+            type="com.sh.techtest.hospitals.ui.DisplayHospital" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/basic_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:showIn="@layout/fragment_hospital_info">
+
+        <com.sh.techtest.utils.InfoListItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:fieldStr="@string/hospital_info_id"
+            app:valueStr="@{hospital.organisationID}"/>
+
+        <com.sh.techtest.utils.InfoListItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:fieldStr="@string/hospital_info_code"
+            app:valueStr="@{hospital.organisationCode}"/>
+
+        <com.sh.techtest.utils.InfoListItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:fieldStr="@string/hospital_info_type"
+            app:valueStr="@{hospital.organisationType}"/>
+
+        <com.sh.techtest.utils.InfoListItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:fieldStr="@string/hospital_info_sub_type"
+            app:valueStr="@{hospital.organisationType}"/>
+
+        <com.sh.techtest.utils.InfoListItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:fieldStr="@string/hospital_info_status"
+            app:valueStr="@{hospital.organisationStatus}"/>
+
+        <com.sh.techtest.utils.InfoListItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:fieldStr="@string/hospital_info_pims"
+            app:valueStr="@{hospital.isPimsManaged}"/>
+
+        <com.sh.techtest.utils.InfoListItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:fieldStr="@string/hospital_info_parent_name"
+            app:valueStr="@{hospital.parentName}"/>
+
+        <com.sh.techtest.utils.InfoListItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:fieldStr="@string/hospital_info_parent_ods"
+            app:valueStr="@{hospital.parentODSCode}"/>
+
+    </LinearLayout>
+</layout>

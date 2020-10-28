@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -38,6 +39,7 @@ class HospitalListFragment : Fragment(), HospitalListAdapter.OnItemClickListener
 
         binding = FragmentHospitalListBinding.inflate(inflater)
         viewModel = ViewModelProvider(this).get(HospitalsViewModel::class.java)
+
 
         return binding.root
     }
