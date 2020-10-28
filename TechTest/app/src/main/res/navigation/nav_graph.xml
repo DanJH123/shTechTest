@@ -21,5 +21,9 @@
         android:id="@+id/hospitalInfoFragment"
         android:name="com.sh.techtest.hospitals.ui.HospitalInfoFragment"
         android:label="fragment_hospital_info"
-        tools:layout="@layout/fragment_hospital_info" />
+        tools:layout="@layout/fragment_hospital_info" >
+        <argument
+            android:name="hospital"
+            app:argType="com.sh.techtest.hospitals.domain.DomainHospital" />
+    </fragment>
 </navigation>

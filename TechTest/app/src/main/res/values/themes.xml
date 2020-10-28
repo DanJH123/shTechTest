@@ -5,7 +5,7 @@
         <item name="colorPrimary">@color/teal</item>
         <item name="colorSecondary">@color/black</item>
         <item name="colorOnPrimary">@color/white</item>
-
+        <item name="android:textColor">@color/dark</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
     </style>
