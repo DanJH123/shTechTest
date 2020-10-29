@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Hospitals</string>
+
+    <string name="hospital_list_title">Hospitals</string>
+    <string name="hospital_item_pims_field">PIMS:</string>
+
+    <string name="hospital_info_title">Further Information</string>
+    <string name="hospital_info_id">ID</string>
+    <string name="hospital_info_code">Code</string>
+    <string name="hospital_info_type">Type</string>
+    <string name="hospital_info_sub_type">Sub-Type</string>
+    <string name="hospital_info_status">Status</string>
+    <string name="hospital_info_parent_ods">Parent ODS Code</string>
+    <string name="hospital_info_parent_name">Parent Name</string>
+    <string name="hospital_info_location_title">Location</string>
+    <string name="hospital_info_address_1">Address Line 1</string>
+    <string name="hospital_info_address_2">Address Line 2</string>
+    <string name="hospital_info_address_3">Address Line 3</string>
+    <string name="hospital_info_city">City</string>
+    <string name="hospital_info_county">County</string>
+    <string name="hospital_info_postcode">Postcode</string>
+    <string name="hospital_info_coordinates">Coordinates</string>
+    <string name="hospital_info_contact_title">Contact</string>
+    <string name="hospital_info_phone">Phone</string>
+    <string name="hospital_info_email">Email</string>
+    <string name="hospital_info_website">Website</string>
+    <string name="hospital_info_fax">Fax</string>
+    <string name="hospital_info_pims">PIMS?</string>
+
+    <string name="filter_menu_show_all">Show All</string>
+    <string name="filter_menu_show_hospital">Hospitals</string>
+    <string name="filter_menu_show_mental_health">Mental Health Hospitals</string>
+    <string name="filter_menu_show_unknown">Unknown</string>
+    <string name="hospital_list_fetch_error">Could not fetch data</string>
+    <string name="hospital_list_fetch_retry">Retry</string>
+</resources>

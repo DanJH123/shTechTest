@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/hospitals_rv"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:background="@color/light"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:visibility="invisible"
+        tools:listitem="@layout/list_item_hospital"/>
+
+    <ProgressBar
+        android:id="@+id/loading_indicator"
+        android:layout_gravity="center"
+        android:layout_marginBottom="32dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_width="@dimen/medium_icon"
+        android:layout_height="@dimen/medium_icon"/>
+
+    <TextView
+        android:id="@+id/error_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/hospital_list_fetch_error"
+        android:textSize="@dimen/large_text"
+        android:textColor="@color/alt"
+        android:layout_marginBottom="32dp"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
+    <Button
+        android:id="@+id/retry_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:background="@drawable/bt_primary_rounded"
+        android:layout_marginBottom="64dp"
+        android:textColor="@color/white"
+        android:text="@string/hospital_list_fetch_retry"/>
+
+</FrameLayout>
