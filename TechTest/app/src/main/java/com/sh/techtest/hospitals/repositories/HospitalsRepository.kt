@@ -1,59 +1,40 @@
 package com.sh.techtest.hospitals.repositories
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import com.sh.techtest.hospitals.domain.DomainHospital
 import com.sh.techtest.hospitals.domain.asDomain
 import com.sh.techtest.hospitals.network.HospitalApi
+import com.sh.techtest.hospitals.repositories.DataRepository.Companion.FAIL
+import com.sh.techtest.hospitals.repositories.DataRepository.Companion.SUCCESS
 import retrofit2.HttpException
 
 /**
  *  This class will be the source of data for the hospital-related queries.
  *  */
-class HospitalsRepository(){
-
-    companion object {
-        /**
-         * Response was a success
-         * */
-        const val SUCCESS = 1
-
-        /**
-         * Response failed
-         * */
-        const val FAIL = 2
-    }
-
-    /**
-     * Wrapper class for hospital API response. Allows us to return any error code along with possible
-     * data
-     *
-     * responseKey: will be a key taken from [HospitalsRepository] companion object
-     * responseList: List of domain objects
-     * */
-    class HospitalListResponse(val responseKey: Int, val responseList: List<DomainHospital>?)
+class HospitalsRepository: DataRepository {
 
     /**
      * Publicly accessible list of hospitals to be set once getHospitalData has been successfully
-     * executed
+     * executed.
+     * Not mutable outside of this class
      * */
-    var hospitalsList: List<DomainHospital>? = null
-
+    private var _hospitalsList: List<DomainHospital>? = null
+    val hospitalsList: List<DomainHospital>?
+        get() = _hospitalsList
 
     /**
      * Calls API to get list of hospitals
      * @return [HospitalListResponse] containing basic success/error codes with the list or null
      * */
-    suspend fun getHospitalData(): HospitalListResponse {
+    override suspend fun getHospitalData(): HospitalListResponse {
         return try{
             //perform request
             val result = HospitalApi.service.getHospitals()
 
             //convert to domain list and assign to property
-            hospitalsList = result.map { it.asDomain() }
+            _hospitalsList = result.map { it.asDomain() }
 
             //Wrap results with code and return
-            HospitalListResponse(SUCCESS, hospitalsList)
+            HospitalListResponse(SUCCESS, _hospitalsList)
         }
         catch (h: HttpException){
             h.printStackTrace()

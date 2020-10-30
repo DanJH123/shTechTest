@@ -1,10 +1,12 @@
 package com.sh.techtest.hospitals.viewmodels
 
 import android.app.Application
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.sh.techtest.hospitals.domain.DomainHospital
+import com.sh.techtest.hospitals.repositories.DataRepository
 import com.sh.techtest.hospitals.repositories.HospitalsRepository
 import com.sh.techtest.hospitals.viewmodels.HospitalsViewModel.SubTypeFilter.*
 import kotlinx.coroutines.CoroutineScope
@@ -68,7 +70,7 @@ class HospitalsViewModel(app: Application): AndroidViewModel(app){
             val result = repository.getHospitalData()
 
             when(result.responseKey){
-                HospitalsRepository.SUCCESS -> {
+                DataRepository.SUCCESS -> {
                     updateFilter(_filter.value ?: NONE)
                     _status.postValue(HospitalApiStatus.SUCCESS)
                 }
@@ -81,18 +83,19 @@ class HospitalsViewModel(app: Application): AndroidViewModel(app){
 
     fun updateFilter(subTypeFilter: SubTypeFilter) {
         _filter.postValue(subTypeFilter)
-        applyFilter(subTypeFilter, repository.hospitalsList)
+        _hospitalsList.postValue(filterList(subTypeFilter, repository.hospitalsList))
     }
 
-    private fun applyFilter(filter: SubTypeFilter, list: List<DomainHospital>?){
-        if(list.isNullOrEmpty()) return
+    // Made public for testing
+    fun filterList(filter: SubTypeFilter, list: List<DomainHospital>?): List<DomainHospital>? {
+        if(list.isNullOrEmpty()) return null
 
-        _hospitalsList.postValue(when (filter) {
+        return when (filter) {
             HOSPITAL -> list.filter { it.subType == HOSPITAL.key }
             MENTAL_HEALTH -> list.filter { it.subType == MENTAL_HEALTH.key }
             UNKNOWN -> list.filter { it.subType == UNKNOWN.key }
             else -> list
-        })
+        }
 
     }
 

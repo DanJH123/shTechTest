@@ -1,13 +1,11 @@
 package com.sh.techtest
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.sh.techtest.R
 import com.sh.techtest.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +23,6 @@ class MainActivity : AppCompatActivity() {
 
         //Listener will adjust the action bar title to the label of the fragment in nav_graph
         navController.addOnDestinationChangedListener { nc: NavController, nd: NavDestination, _: Bundle? ->
-            Log.i("O", "${nc.currentDestination?.label} - ${nd.label} " )
             supportActionBar?.title = nd.label
         }
 
