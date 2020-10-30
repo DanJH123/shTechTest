@@ -6,15 +6,7 @@ By Daniel Hignell
 - Further information can be viewed by tapping on a list item
 - The list can be filtered by "Sub-Type" by using the options menu on the top-right of the screen.
 
-## Project
-- When viewing the project on Android Studio, the majority of the logic comes under the `techtest.hospitals` package.
-- There are a small number of tests to be found in the `(test)` and `(androidTest)` folders
-- Using:
-  - MVVM architecture with Repository
-  - NavigationUI for navigating between the two pages and passing arguments
-  - Retrofit and Moshi for network request.
-
-## To Run App
+## Installation Instructions
 
 - Ensure you have an android device running **version 7.0 or above**
 - Scan this QR code and follow the steps 
@@ -28,3 +20,11 @@ By Daniel Hignell
 
 ***NOTE: This app is confirmed to work for android 7.0 and above (may work on 5.0 or 6.0). Earlier versions have a bug related to the okHttp3 library that may have been fixed by changing the module version but could not be tested and so was left out of this release.***
 
+## Project - `git clone https://github.com/DanJH123/shTechTest.git`
+- When viewing the project on Android Studio, the majority of the logic comes under the `techtest.hospitals` package.
+- `main` and `develop` branches are identical
+- There are a small number of tests to be found in the `(test)` and `(androidTest)` folders
+- Using:
+  - MVVM architecture with Repository
+  - NavigationUI for navigating between the two pages and passing arguments
+  - Retrofit and Moshi for network request.
